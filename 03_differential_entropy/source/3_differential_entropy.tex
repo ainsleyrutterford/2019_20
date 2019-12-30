@@ -20,7 +20,7 @@ In other words the only change is to replace the sum over the discrete
 variable with an integral over the continuous one. We will see later
 however that the relationship between the two definitions, the one we
 saw before for discrete distributions and this new definition for
-continuous distributions, isn't a straight forward as you might hope
+continuous distributions, isn't as straight forward as you might hope
 and so it makes sense to use a different symbol, in this case a small
 $h$ for the differential entropy.
 
@@ -41,9 +41,9 @@ In fact, our previous notion of entropy, based on the source coding
 theorem, that it quantifies the amount of information in a signal,
 does not work here since a real number, if written to infinite
 precision, contains infinite information. Of course, in practice, if a
-real values signal is used to communicate information there will be
+real value's signal is used to communicate information there will be
 imprecision in both the encode and decoding, limiting the amount of
-information that can be carried by signal from the person encode the
+information that can be carried by signal from the person encoding the
 data to the person decoding it and so it is still useful to study
 continuous signals using the tools of information theory.
 
@@ -105,7 +105,7 @@ can pick a point, say $a$ such that $f(a)<\bar{f}$ and another point
 $b$ such that $f(b)>\bar{f}$. Since the function is continuous as we
 move from $a$ to $b$ we must at some point pass through a point where
 $f(x)=\bar{f}$. There may be more than one such point, but the idea
-here is that there is at least one, and in our appication $\bar{x}_n$
+here is that there is at least one, and in our application $\bar{x}_n$
 is any such point.
 
 If we substitute this into the formula for $H(X^{\delta x})$ we had back in Eq.~\ref{HY} we get 
@@ -140,7 +140,7 @@ as $\delta x\rightarrow 0$ where $\tilde{x}_n\in [x_{n-1},x_n)$ so we can see th
 
 Thus, if you consider a continuous random variable as a limit of
 discrete distributions, the entropy will go to infinity because the
-number of values you are summing over become infinite; however, the
+number of values you are summing over becomes infinite; however, the
 definition of the differential entropy has an extra term, the
 $\log{\delta x}$ which cancels this effect. The approximate formula is also instructive:
 \begin{equation}
@@ -148,7 +148,7 @@ $\log{\delta x}$ which cancels this effect. The approximate formula is also inst
 \end{equation}
 If the support is finite, say of length $L$, with $N=L/\delta x$ the
 number of subintervals, then, approximately, the differential entropy
-has two components the entropy: the entropy of the $N$-bit encoding of
+has two components: the entropy of the $N$-bit encoding of
 the result and another term corresponding to what remains after the
 $N$-bit encoding.
 
@@ -165,13 +165,13 @@ $y$ is a strictly monotonic function of $x$ so
 \begin{equation}
   dx=\left|\frac{dx}{dy}\right|dy
 \end{equation}
-so if $y_0=y(x_0$ and $y_1=y(x_1)$ we have
+so if $y_0=y(x_0)$ and $y_1=y(x_1)$ we have
 \begin{equation}
   P(y\in[y_0,y_1))=\int_{y_0}^{y_1} p_X(x(y))\frac{dy}{|dx/dy|}
 \end{equation}
 where we've inverted the function $y(x)$ to work out which value of
 $p_X$ to use for a given $y$. Now changing variables shouldn't change
-the actually probability, we should have
+the actual probability, we should have
 \begin{equation}
   P(y\in[y_0,y_1))=  P(x\in[x_0,x_1))
 \end{equation}
