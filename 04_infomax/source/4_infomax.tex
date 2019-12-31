@@ -13,7 +13,7 @@
 \section*{Infomax}
 
 The second information theory example we will consider is the Infomax
-algorithm. This is a approach to unmixing mixed data proposed in
+algorithm. This is an approach to unmixing mixed data proposed in
 \cite{BellSejnowski1995} and gives an in-principle explanation for how
 the brain might perform auditory source separation. In other words, it
 shows how source separation might be performed and indicates some of
@@ -52,7 +52,7 @@ approximately. However, given these assumption we have
 \begin{equation} \mathbf{r}(t)=M\mathbf{s}(t) \end{equation} with $M$
 a square mixing matrix. The goal is to find the unknown source signals
 $\textbf{s}(t)$ from the known recordings $\textbf{r}(t)$. Although it
-makes little difference, lets restrict ourselves to two sources, so
+makes little difference, let's restrict ourselves to two sources, so
 $\mathbf{s}$ and $\mathbf{r}$ are two-dimensional vectors and $M$ is a
 two-by-two matrix.
 
@@ -88,7 +88,7 @@ h(\lambda X)=h(X)+\log{|\lambda|}
 
 Now, the idea is to solve the problem by using the fact that $S_1$ and
 $S_2$ are independent: we just need to find $W$ so that $X_1$ and
-$X_2$ are also independent. One approach might be to decorrellate the
+$X_2$ are also independent. One approach might be to decorrelate the
 random variables:
 \begin{equation}
 C(X_1,X_2)=\langle(X_1-\langle X_1\rangle)(X_2-\langle X_2\rangle)\rangle_{(X_1,X_2)}
@@ -149,7 +149,7 @@ Now we have\footnote{In broadcast notation $\mathbf{y}=g.(\mathbf{x}+\mathbf{w})
 \begin{equation}
 {\bf s}\stackrel{\mbox{mixing}}{\longrightarrow}{\bf r}=M{\bf s}\stackrel{\mbox{unmixing}}{\longrightarrow}{\bf x}=W{\bf r}\stackrel{\mbox{non-linearity}}{\longrightarrow}{\bf y}:\,y_a=g(x_a+w_a)
 \end{equation}
-For later notational convenience, let write
+For later notational convenience, let's write
 \begin{equation}
 y_a=g(x_a+w_a)=f(r_1,r_2;W,w_a)
 \end{equation}
@@ -164,7 +164,7 @@ conversely, if it is a large negative number, $g(\lambda x)$ will be
 near to zero: a distribution that is often zero and often one is not
 very entropic.
 
-Before considering the source separation problem, lets look at the
+Before considering the source separation problem, let's look at the
 effect of the non-linearity on its own: we consider the one-to-one
 case
 \begin{equation}
@@ -201,7 +201,7 @@ as $n$ gets large.
 
 Of course we do not have $p_Y(y)$ and it would be difficult to
 estimate, but, it turns out we do not need it to get the derivative of
-$\tilde{h(y)}$. We have seen already that since $y=f(r;W,w)$
+$\tilde{h}(y)$. We have seen already that since $y=f(r;W,w)$
 \begin{equation}
 p_Y(y)=\frac{p_R[r=f^{-1}(y)]}{|f'(f^{-1}(y)|}
 \end{equation}
@@ -260,16 +260,16 @@ with $r=f^{-1}(y)$. Hence, if $Y$ is evenly distributed on its interval $(0,1)$ 
 f(r)=\int_{-\infty}^rp_R(u)du
 \end{equation}
 Now this is not what we do, we do not know $p_R(r)$ and we chose
-$f(r)$ at the start, here it a member of a two-parameter family of
+$f(r)$ at the start, here it's a member of a two-parameter family of
 functions parameterized by $W$ and $w$. However, ideally, if the
 derivative of the saturating non-linearity is somewhat close to the
 distribution of $R$ then infomax will find the $W$ and $w$ that line
 everything up so that $Y$ will have something close to an even
 distribution. Here is an example:
-\begin{eqnarray}
-\textbf{A}\epsfig{file=pr.eps,width=5cm,angle=270}&&\textbf{B}\epsfig{file=pu.eps,width=5cm,angle=270}\cr
-\textbf{D}\epsfig{file=y.eps,width=5cm,angle=270}&&\textbf{C}\epsfig{file=g.eps,width=5cm,angle=270}
-\end{eqnarray}
+\begin{eqnarray*}
+\textbf{A}\epsfig{file=pr.eps,width=4cm,angle=270}&&\textbf{B}\epsfig{file=pu.eps,width=4cm,angle=270}\cr
+\textbf{D}\epsfig{file=y.eps,width=4cm,angle=270}&&\textbf{C}\epsfig{file=g.eps,width=4cm,angle=270}
+\end{eqnarray*}
 Figure \textbf{A} shows an initial distribution 
 \begin{equation}
 p_R(r)=\frac{1}{\sqrt{10\pi}}e^{(r-3)^2/10}
