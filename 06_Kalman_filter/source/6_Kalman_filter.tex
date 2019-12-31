@@ -16,16 +16,16 @@ The Kalman filter is a commonly used technique in signal processing;
 it is one of the main tools used in the guidance and control of
 autonomous agents. We are interested in it here because it is another
 example of Bayesian inference which is actually somewhat similar to
-the sensory fusion example we say earlier. It is probably that Kalman
+the sensory fusion example we saw earlier. It is probably that Kalman
 filtering is implemented neurally; we will look at an example of that.
 
 We will do the simplest example and introduce it in the case of a
-navigation along a track; obviously this is different the examples we
+navigation along a track; obviously this is different from the examples we
 might be interested in, but it makes the story easy to tell. Imagine
 someone cycling along a path; they have a GPS accurate to within 10m
 but for reasons we might make up, they want a more accurate estimate
 of their position. They walk at a constant rate, well nearly
-constance, it might vary a little bit from minute to minute because of
+constant, it might vary a little bit from minute to minute because of
 gusts of wind, slight variations in slope. If they are moving at a
 constant rate, they have a second approach to calculating their
 position, that is by dead reckoning, multiplying their time of travel
@@ -33,7 +33,7 @@ by their speed. The idea behind a Kalman filter is to make the optimal
 combination of these two noisy pieces of information about their
 position.
 
-Lets write down some equations. Let 
+Let's write down some equations. Let 
 \begin{equation}
 \mathbf{\bar{x}}=\left(\begin{array}{c}\bar{s}\\\bar{v}\end{array}\right)
 \end{equation}
@@ -44,7 +44,7 @@ what we mean by $\mathbf{\bar{x}}$ is that it is the mean of our
 probability distribution for position $s$ and speed $v$. Throughout
 what follows, all distributions are Gaussian and we will benefit from
 the usual Gaussian magic whereby whenever you do stuff to Gaussians
-you get more Gaussians. Inf fact, the Kalman filter works well for
+you get more Gaussians. In fact, the Kalman filter works well for
 other distributions, because distributions often look like Gaussians,
 but it is only proved here to be the optimal approach for Gaussian
 uncertainty. Of course, Gaussians are described by two sets of
@@ -56,22 +56,22 @@ the means and variances.
 
 Using the obvious notation, covariance is given by
 \begin{equation}
-P=[\langle (x_i-\bar{x}_i)(x_j-\bar{x}_j)\rangle
+P=\langle (x_i-\bar{x}_i)(x_j-\bar{x}_j)\rangle
 \end{equation}
 The idea behind the Kalman filter is to update both the mean and
 covariance. This is done using Bayesian inference, but it is phrased
 in terms of the mean and covariance, rather than the full
 probabilities.
 
-Lets consider dead reckoning first. Imagine the cyclist consults their
+Let's consider dead reckoning first. Imagine the cyclist consults their
 GPS every $\delta t$. If there was no noise then $x\rightarrow
 x+v\delta t$ and, since the speed remains the same, 
 $v\rightarrow v$. 
 In fact, it is easy to include the possibility of variable
-accelleration by including a \textsl{control vector} to describe the
-cyclist's intentional changes in accelleration. Although this is a
+acceleration by including a \textsl{control vector} to describe the
+cyclist's intentional changes in acceleration. Although this is a
 fairly simple addition, we won't include that here to keep the
-notation as clear as possible. Lets use a subscript $a$ to mean the
+notation as clear as possible. Let's use a subscript $a$ to mean the
 change of the position after movement
 \begin{equation}
 \textbf{x}_a=F\textbf{x}+\textbf{w}
@@ -91,7 +91,7 @@ because the Gaussian noise has zero mean, so we get
 \end{equation}
 This is our estimate of the position after motion based on dead reckoning. For convenience we will write $\mathbf{x}_d=\mathbf{\bar{x}}_a$
 
-The change to $P$ is more complicated. Lets motivate the result with a
+The change to $P$ is more complicated. Let's motivate the result with a
 simpler example. Say we had a variable $y$ with variance $p$ so $y$ is
 drawn from $\mathcal{N}(\bar{y},p)$ and say that $y$ is transformed by 
 \begin{equation}
@@ -100,7 +100,7 @@ y_d=fy+u
 where $f$ is some number, the analogue of the motion matrix and $u$ is
 noise drawn from $\mathcal{N}(0,q)$. Calculating the new distribution
 is actually a bit complicated because it involves a convolution but
-lets just quote the result: among the nice properties of Gaussians is
+let's just quote the result: among the nice properties of Gaussians is
 that the convolution of Gaussians is a Gaussian. The nice thing is
 that if we know distribution for $y_d$ is a Gaussian then we only need
 to calculate its moments and that is easy
@@ -112,7 +112,7 @@ and with some more algebra
 \langle (y_d-\bar{y}_d)^2\rangle &=&\langle (fy+u)^2 \rangle-\bar{y}_d^2=f^2\langle y^2\rangle+\langle u^2\rangle -f^2\bar{y}^2\cr
 &&=f^2(p+\bar{y}^2)+q-f^2\bar{y}=f^2p+q
 \end{eqnarray}
-where we have used the assumption that there is no correllation
+where we have used the assumption that there is no correlation
 between the new noise $u$ and uncertainty in $y$.
 
 The actual change in $P$ can be derived using similar algebra which
@@ -149,8 +149,8 @@ independence. Now all we need to do is to multiply the Gaussians and
 find the new mean and variance. Obviously this is difficult because it
 is in two dimensions. 
 
-Lets look at a one dimensional version where we will use $y$ whereever
-there is a $\mathbf{x}$ and little letters for variances to correspond
+Let's look at a one dimensional version where we will use $y$ wherever
+there is an $\mathbf{x}$ and little letters for variances to correspond
 to all the big letter covariance matrices:
 \begin{equation}
 p(y_a|y_dy_s)\propto p(y_d|y_a)p(y_s|y_a)
